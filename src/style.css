@@ -80,6 +80,14 @@ p {
   border-bottom: 3px solid #1a883f;
 }
 
+.infoResults div p {
+  width: 80%;
+  margin: 30px auto;
+  background: rgb(122, 122, 162243);
+  padding: 20px;
+  border-bottom: 3px solid lightgray;
+}
+
 .contact-form button:hover {
   background-color: #1a883f;
   border-bottom: 3px solid #22b352;

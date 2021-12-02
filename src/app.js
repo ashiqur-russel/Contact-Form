@@ -35,7 +35,8 @@ function submitForm(e) {
   let name = document.querySelector(".name").value;
   let email = document.querySelector(".email").value;
   let message = document.querySelector(".message").value;
-  console.log(name, email, message);
+  
+  //console.log(name, email, message);
 
   saveContactInfo(name, email, message);
 
@@ -52,8 +53,35 @@ function saveContactInfo(name, email, message) {
     email: email,
     message: message,
   });
+
+  retrieveInfos();
+}
+
+//Retrieve Infos from database
+function retrieveInfos(){
+  let ref = firebase.database().ref("infos");
+  ref.once('value',gotData);
 }
 
 
+function gotData(data){
+  let info= data.val();
+  let keys = Object.keys(info);
 
+  for(let i=0; i<keys.length;i++){
+      let infoData=keys[i];
+      let name=info[infoData].name;
+      let email = info[infoData].email;
+      let message = info[infoData].message;
 
+      console.log(name,email,message);
+
+      let infosResult = document.querySelector(".InfosResult");
+
+      infosResult.innerHTML+= `<div>
+      <p><strong>Name:<strong/>${name}<br/>
+          <a><strong>Email:<strong/>${email}</a><br/>
+          <a><strong>Message:<strong/>${message}</a></p>
+      </div>`;
+    }
+  }
