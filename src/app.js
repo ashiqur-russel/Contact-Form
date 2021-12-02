@@ -39,6 +39,7 @@ function submitForm(e) {
 
   saveContactInfo(name, email, message);
 
+  //Reset Contact Form
   document.querySelector(".contact-form").reset();
 }
 
