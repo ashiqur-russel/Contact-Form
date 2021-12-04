@@ -88,11 +88,6 @@ p {
   border-bottom: 3px solid lightgray;
 }
 
-.contact-form button:hover {
-  background-color: #1a883f;
-  border-bottom: 3px solid #22b352;
-}
-
 @media all and (min-width: 1000px) {
   .contact-form {
     width: 40%;

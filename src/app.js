@@ -42,6 +42,9 @@ function submitForm(e) {
 
   //Reset Contact Form
   document.querySelector(".contact-form").reset();
+
+  //Function for send email from form data
+  sendEmail(name,email,message);
 }
 
 // Save infos to Firebase
@@ -85,3 +88,18 @@ function gotData(data){
       </div>`;
     }
   }
+
+// Send data to email
+  function sendEmail(name,email,message) {
+Email.send({
+    Host : "smtp.mailtrap.io", 
+    Username : "user from mail server", // from mailtrap.io check SMTP setting
+    Password : "pass from mail server",
+    To : 'test@gmail.com',
+    From : email,
+    Subject : `${name} sent you message`,
+    Body : `<html><h2>Name: ${name}</h2><br/><p>Email: ${email}</p><strong>Mesage: ${message}</strong><br></br></html>`
+}).then(
+  (message) => alert("Successfully sent")
+);
+}
